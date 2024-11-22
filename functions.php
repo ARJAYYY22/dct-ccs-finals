@@ -187,13 +187,16 @@ function calculateTotalPassedAndFailedStudents() {
         $stmt->execute();
         $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Initialize counters
+        // Initialize counters for passed and failed students
         $passed = 0;
         $failed = 0;
 
-        // Loop through each student
+        // Loop through each student and calculate their average grade
         foreach ($students as $student) {
+            // Calculate average grade for the student
             $average_grade = $student['total_grades'] / $student['total_subjects'];
+
+            // Check if the student passed or failed
             if ($average_grade >= 75) {
                 $passed++;
             } else {
@@ -201,20 +204,17 @@ function calculateTotalPassedAndFailedStudents() {
             }
         }
 
-        // Return the total passed and failed students
+        // Return the result
         return [
             'passed' => $passed,
             'failed' => $failed
         ];
+
     } catch (PDOException $e) {
+        // Return the error message if an exception occurs
         return "Error: " . $e->getMessage();
     }
 }
-
-
-
-
-
 
 function addSubject($subject_code, $subject_name) {
     $validateSubjectData = validateSubjectData($subject_code, $subject_name);

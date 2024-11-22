@@ -2,9 +2,10 @@
 require '../functions.php';
 guardDashboard();
 
-$logoutPage = 'logout.php';
-$subjectPage = './subject/add.php';
-$studentPage = './student/register.php';
+$logoutPage = '../logout.php';
+$dashboardPage = '../dashboard.php';
+$studentPage = '../student/register.php';
+$SubjectPage = '../subject/add.php';
 require './partials/header.php';
 require './partials/side-bar.php';
 
