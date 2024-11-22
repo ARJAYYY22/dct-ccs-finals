@@ -4,7 +4,8 @@ include '../partials/header.php';
 
 $logoutPage = '../logout.php';
 $dashboardPage = '../dashboard.php';
-$studentPage = '../student/register.php';
+$studentPage = '../subject/register.php';
+$SubjectPage = '/admin/subject/add.php';
 include '../partials/side-bar.php';
 ?>
 

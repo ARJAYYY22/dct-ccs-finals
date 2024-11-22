@@ -5,7 +5,7 @@ include '../partials/header.php';
 $logoutPage = '../logout.php';
 $dashboardPage = '../dashboard.php';
 $studentPage = '.register.php';
-$subjectPage = './subjects/add.php';
+$subjectPage = './subject/add.php';
 include '../partials/side-bar.php';
 
 
