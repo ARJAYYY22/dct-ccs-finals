@@ -14,15 +14,16 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="<?=$subjectPage ?? "#"?>">
-                        Subjects
+                        Subject
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-2" href="<?=$studentPage ?? "#"?>">
-                        <i class="fa-solid fa-user fa-fw me-2"></i>
-                        Students
+                    <a class="nav-link d-flex align-items-center gap-2" href="/admin/subject/add.php"
+                    style="<?php echo (basename($_SERVER['PHP_SELF']) == 'add.php') ? 'font-weight: bold;' : ''; ?>">
+                        <i class="fa-solid fa-file fa-fw me-2"></i>
+                        Subjects
                     </a>
-                </li>                
+                </li>      
             </ul>
            
             <hr class="my-3">
