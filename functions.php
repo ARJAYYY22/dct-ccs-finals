@@ -28,7 +28,7 @@ function getConnection() {
     $host = 'localhost'; // Replace with your host
     $dbName = 'dct-ccs-finals'; // Replace with your database name
     $username = 'root'; // Replace with your username
-    $password = 'root'; // Replace with your password
+    $password = ''; // Replace with your password
     $charset = 'utf8mb4'; // Recommended for UTF-8 support
     
     try {
@@ -187,45 +187,6 @@ function calculateTotalPassedAndFailedStudents() {
         $stmt->execute();
         $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Initialize counters
-        $passed = 0;
-        $failed = 0;
-
-        // Loop through each student
-        foreach ($students as $student) {
-            $average_grade = $student['total_grades'] / $student['total_subjects'];
-            if ($average_grade >= 75) {
-                $passed++;
-            } else {
-                $failed++;
-            }
-        }
-
-        // Return the total passed and failed students
-        return [
-            'passed' => $passed,
-            'failed' => $failed
-        ];
-    } catch (PDOException $e) {
-        return "Error: " . $e->getMessage();
-    }
-}
-function calculateTotalPassedAndFailedStudents() {
-    try {
-        // Get the database connection
-        $conn = getConnection();
-
-        // SQL query to calculate the total grade for each student and their count of assigned subjects
-        $sql = "SELECT student_id, 
-                       SUM(grade) AS total_grades, 
-                       COUNT(subject_id) AS total_subjects 
-                FROM students_subjects 
-                GROUP BY student_id";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         // Initialize counters for passed and failed students
         $passed = 0;
         $failed = 0;
@@ -254,14 +215,6 @@ function calculateTotalPassedAndFailedStudents() {
         return "Error: " . $e->getMessage();
     }
 }
-
-
-
-
-
-
-
-
 
 function addSubject($subject_code, $subject_name) {
     $validateSubjectData = validateSubjectData($subject_code, $subject_name);
